@@ -1,0 +1,47 @@
+{
+  "name": "matrix",
+  "version": "0.0.0",
+  "homepage": "https://github.com/mygithubhandlehere/matrix",
+  "authors": [
+    "First Last <first.last@email.com>"
+  ],
+  "description": "Help Neo battle the agents",
+  "keywords": [
+    "mean-seed",
+    "mean",
+    "mean-stack",
+    "generator-mean-seed",
+    "javascript",
+    "angular",
+    "node",
+    "matrix"
+  ],
+  "dependencies": {
+    "angular": "1.3.2",
+    "angular-animate": "1.3.2",
+    "angular-sanitize": "1.3.2",
+    "angular-touch": "1.3.2",
+    "angular-route": "1.3.2",
+    "angular-cookies": "1.3.2",
+	"angular-mocks": "1.3.2",
+    "lesshat": "latest",
+    "font-awesome": "latest",
+    "less-flexbox": "latest",
+    "momentjs": "latest",
+    "angular-string": "latest",
+    "angular-array": "latest",
+    "angular-google-auth": "latest",
+    "angular-forminput": "latest",
+    "angular-socket-io": "latest"
+  },
+  "license": "MIT",
+  "resolutions": {
+    "angular": "1.3.2",
+    "angular-animate": "1.3.2",
+    "angular-sanitize": "1.3.2",
+    "angular-touch": "1.3.2",
+    "angular-route": "1.3.2",
+    "angular-cookies": "1.3.2",
+	"angular-mocks": "1.3.2"
+  }
+}

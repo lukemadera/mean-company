@@ -1,0 +1,11 @@
+{
+    "name": "matrix",
+    "description": "Help Neo battle the agents",
+    "version": "0.0.0",
+    "url": "https://github.com/mygithubhandlehere/matrix",
+    "options": {
+        "paths": ".",
+        "outdir": "yuidocs/backend",
+        "exclude": "node_modules,public,src"
+    }
+}
