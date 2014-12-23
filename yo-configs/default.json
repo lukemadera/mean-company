@@ -1,8 +1,8 @@
 {
 	"prompts":{
-		"optAppName": "matrix",
-		"optAppTitle": "Matrix",
-		"optAppDescription": "Help Neo battle the agents",
+		"optAppName": "meancompany",
+		"optAppTitle": "MEAN Company",
+		"optAppDescription": "Learn to build a web application with the MEAN stack",
 		"optAppKeywords": [
 			"mean-seed",
 			"mean",
@@ -11,7 +11,7 @@
 			"javascript",
 			"angular",
 			"node",
-			"matrix"
+			"learn"
 		],
 		"optGithubName": "mygithubhandlehere",
 		"optAuthorName": "First Last <first.last@email.com>",
