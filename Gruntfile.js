@@ -801,7 +801,7 @@ module.exports = function(grunt) {
 				appServer: {
 					action: 'restart',
 					file: 'run.js',
-					options: ["-m '"+cfgJson.app.name+" port "+cfgJson.server.port+"'"]
+					options: ["-m '"+cfgJson.app.name+" port "+cfgJson.server.port+"' -l "+cfgJson.foreverOptions.logfile+" "]
 				},
 				/*
 				//do no need this anymore since backend tests automatically run the test server!

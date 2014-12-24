@@ -1,8 +1,8 @@
 {
-	"name": "matrix",
-    "description": "Help Neo battle the agents",
+	"name": "meancompany",
+    "description": "Learn to build a web application with the MEAN stack",
     "version": "0.0.0",
-    "url": "https://github.com/mygithubhandlehere/matrix",
+    "url": "https://github.com/mygithubhandlehere/meancompany",
     "options": {
         "paths": "./app/src/",
         "outdir": "yuidocs/frontend",

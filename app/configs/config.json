@@ -7,9 +7,12 @@
 	"operatingSystem":"windows",
 	"operatingSystemComment":"One of: 'windows', 'mac', 'linux'",
 	"forever": 0,
+	"foreverOptions": {
+		"logfile": "forever.log"
+	},
 	"app": {
-		"name": "matrix",
-		"title": "Matrix"
+		"name": "meancompany",
+		"title": "MEAN Company"
 	},
 	"platform":"",
 	"server": {
@@ -38,7 +41,7 @@
 		"fullURI": "",
 		"host": "localhost",
 		"port": 27017,
-		"database": "matrix",
+		"database": "meancompany",
 		"username": false,
 		"password": false
 	},
@@ -87,7 +90,7 @@
 		"addresses": {
 			"noReply": "noreply"
 		},
-		"from": "admin@matrix.com",
+		"from": "admin@meancompany.com",
 		"from_name": "Admin",
 		"mandrillApiKey": "8X-1bNRWtA4rbneppkqahw",
 		"mandrillApiKeyComment":"Make sure to CHANGE this!"

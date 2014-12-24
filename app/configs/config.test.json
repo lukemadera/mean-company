@@ -7,9 +7,12 @@
 	"operatingSystem":"windows",
 	"operatingSystemComment":"One of: 'windows', 'mac', 'linux'",
 	"forever": 0,
+	"foreverOptions": {
+		"logfile": "forever.log"
+	},
 	"app": {
-		"name": "matrix",
-		"title": "Matrix"
+		"name": "meancompany",
+		"title": "MEAN Company"
 	},
 	"platform":"",
 	"server": {
@@ -89,7 +92,7 @@
 		"addresses": {
 			"noReply": "noreply"
 		},
-		"from": "admin@matrix.com",
+		"from": "admin@meancompany.com",
 		"from_name": "Admin TEST",
 		"mandrillApiKey": "8X-1bNRWtA4rbneppkqahw",
 		"mandrillApiKeyComment":"Make sure to CHANGE this!"
