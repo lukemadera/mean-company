@@ -557,6 +557,9 @@
 										"html": [
 											"test.html"
 										],
+										"less": [
+											"test.less"
+										],
 										"testUnit": [
 											"TestCtrl.spec.js"
 										]
