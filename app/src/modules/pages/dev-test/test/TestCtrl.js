@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('myApp').controller('TestCtrl', ['$scope', '$timeout', 'appHttp', 'UserModel', '$location', function($scope, $timeout, appHttp, UserModel, $location) {
+angular.module('myApp').controller('TestCtrl', ['$scope', '$timeout', 'appHttp', 'UserModel', '$location', '$q', function($scope, $timeout, appHttp, UserModel, $location, $q) {
 	
 	$scope.myVar ='var1';
 	$scope.user =UserModel.load();
@@ -11,5 +11,45 @@ angular.module('myApp').controller('TestCtrl', ['$scope', '$timeout', 'appHttp',
 	
 	$scope.tapIt =function(evt, params) {
 		console.log('tap');
+	};
+
+	function asyncFunc(var1, callback) {
+		$timeout(function() {
+			console.log('timeout finished');
+			callback();
+		}, 1000);
+		console.log('timeout started');
+	}
+
+	function asyncFuncPromise(var1) {
+		var deferred =$q.defer();
+		$timeout(function() {
+			console.log('timeout finished');
+			deferred.resolve();
+		}, 1000);
+		console.log('timeout started');
+		return deferred.promise;
+	}
+
+	$scope.$on('myEvt', function(evt, params) {
+		console.log('async event done');
+	});
+
+	$scope.triggerAsync =function() {
+		/*
+		asyncFunc(5, function() {
+			console.log('async done');
+		})
+		*/
+		/*
+		asyncFuncPromise(5)
+		.then(function() {
+			console.log('async promise resolved');
+		});
+		*/
+		$timeout(function() {
+			$scope.$broadcast('myEvt', {});
+		}, 1000);
+		$scope.$broadcast('myEvt', {});
 	};
 }]);
