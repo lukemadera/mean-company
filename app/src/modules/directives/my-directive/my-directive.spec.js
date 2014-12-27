@@ -35,8 +35,12 @@ describe('appMyDirective', function() {
 	// afterEach(function() {
 	// });
 	
-	/*
-	it('should do something', function() {
+	
+	it('should have a scopeOne property', function() {
+		$scope.scopeOne ='test scope one';
+		var html ="<div app-my-directive scope-one='scopeOne'></div>";
+		createElm({html:html});
+		expect(elmScope.scopeOne).toBe('test scope one');
 	});
-	*/
+	
 });
