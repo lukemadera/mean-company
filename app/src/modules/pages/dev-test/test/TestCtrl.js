@@ -3,7 +3,14 @@
 angular.module('myApp').controller('TestCtrl', ['$scope', '$timeout', 'appHttp', 'UserModel', '$location', '$q', function($scope, $timeout, appHttp, UserModel, $location, $q) {
 	
 	$scope.scopeOne ='scope one text';
-	
+	$scope.$on('appMyDirectiveEvent1', function(evt, params) {
+		console.log('controller $on event');
+	});
+	$scope.funcOne =function() {
+		console.log('funcOne called');
+	};
+
+
 	$scope.myVar ='var1';
 	$scope.user =UserModel.load();
 	
