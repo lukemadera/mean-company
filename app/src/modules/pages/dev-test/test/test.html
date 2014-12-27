@@ -1,4 +1,12 @@
 <div class='test' ng-controller='TestCtrl'>
+	<div app-my-directive></div>
+
+	<div app-my-directive custom-text='text 2' scope-one='scopeOne'></div>
+
+	<div app-my-directive custom-text='text 3'></div>
+
+	<br /><br />
+
 	<btn ng-click='triggerAsync()'>Trigger Async</btn>
 
 	Test {{myVar}}

@@ -2,6 +2,8 @@
 
 angular.module('myApp').controller('TestCtrl', ['$scope', '$timeout', 'appHttp', 'UserModel', '$location', '$q', function($scope, $timeout, appHttp, UserModel, $location, $q) {
 	
+	$scope.scopeOne ='scope one text';
+	
 	$scope.myVar ='var1';
 	$scope.user =UserModel.load();
 	

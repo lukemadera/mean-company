@@ -362,6 +362,20 @@
 									"layout.spec.js"
 								]
 							}
+						},
+						{
+							"name": "my-directive",
+							"files": {
+								"js": [
+									"my-directive.js"
+								],
+								"testUnit": [
+									"my-directive.spec.js"
+								],
+								"less": [
+									"my-directive.less"
+								]
+							}
 						}
 					]
 				},
