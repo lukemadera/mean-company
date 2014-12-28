@@ -287,6 +287,17 @@
 									"error-msg.spec.js"
 								]
 							}
+						},
+						{
+							"name": "items-list",
+							"files": {
+								"js": [
+									"items-list.js"
+								],
+								"testUnit": [
+									"items-list.spec.js"
+								]
+							}
 						}
 					]
 				},
