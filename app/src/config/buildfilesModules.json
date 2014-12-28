@@ -631,6 +631,23 @@
 									}
 								}
 							]
+						},
+						{
+							"name": "my-page",
+							"files": {
+								"html": [
+									"my-page.html"
+								],
+								"js": [
+									"MyPageCtrl.js"
+								],
+								"testUnit": [
+									"MyPageCtrl.spec.js"
+								],
+								"less": [
+									"my-page.less"
+								]
+							}
 						}
 					]
 				}
