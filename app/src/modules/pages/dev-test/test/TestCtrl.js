@@ -2,12 +2,18 @@
 
 angular.module('myApp').controller('TestCtrl', ['$scope', '$timeout', 'appHttp', 'UserModel', '$location', '$q', function($scope, $timeout, appHttp, UserModel, $location, $q) {
 	
+	$scope.log =[];
+	function logIt(text) {
+		console.log('logIt: '+text);
+		$scope.log.push(text);
+	}
+
 	$scope.scopeOne ='scope one text';
 	$scope.$on('appMyDirectiveEvent1', function(evt, params) {
-		console.log('controller $on event');
+		logIt('controller $on event');
 	});
 	$scope.funcOne =function() {
-		console.log('funcOne called');
+		logIt('funcOne called');
 	};
 
 
@@ -15,45 +21,45 @@ angular.module('myApp').controller('TestCtrl', ['$scope', '$timeout', 'appHttp',
 	$scope.user =UserModel.load();
 	
 	$scope.swipeIt =function(evt, direction, params) {
-		console.log('swipe: '+direction);
+		logIt('swipe: '+direction);
 	};
 	
 	$scope.tapIt =function(evt, params) {
-		console.log('tap');
+		logIt('tap');
 	};
 
 	function asyncFunc(var1, callback) {
 		$timeout(function() {
-			console.log('timeout finished');
+			logIt('timeout finished');
 			callback();
 		}, 1000);
-		console.log('timeout started');
+		logIt('timeout started');
 	}
 
 	function asyncFuncPromise(var1) {
 		var deferred =$q.defer();
 		$timeout(function() {
-			console.log('timeout finished');
+			logIt('timeout finished');
 			deferred.resolve();
 		}, 1000);
-		console.log('timeout started');
+		logIt('timeout started');
 		return deferred.promise;
 	}
 
 	$scope.$on('myEvt', function(evt, params) {
-		console.log('async event done');
+		logIt('async event done');
 	});
 
 	$scope.triggerAsync =function() {
 		/*
 		asyncFunc(5, function() {
-			console.log('async done');
+			logIt('async done');
 		})
 		*/
 		/*
 		asyncFuncPromise(5)
 		.then(function() {
-			console.log('async promise resolved');
+			logIt('async promise resolved');
 		});
 		*/
 		$timeout(function() {
