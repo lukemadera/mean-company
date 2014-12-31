@@ -40,6 +40,8 @@ var pathParts =dependency.buildPaths(__dirname, {});
 //site-specific
 var io;
 var RealtimeMod =require(pathParts.services+'realtime/realtime.js');
+var CronMod =require(pathParts.services+'cron/cron.js');
+CronMod.testRun({});
 
 var self;
 
