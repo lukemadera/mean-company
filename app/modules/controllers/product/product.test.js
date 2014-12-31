@@ -357,7 +357,7 @@ function go(params) {
 		api.expectRequest({method:'Product.saveTitle'}, {data:params}, {}, {})
 		.then(function(res) {
 			var data =res.data.result;
-			expect(data.title).toBe('bad title');		
+			expect(data.product.title).toBe(newTitle);		
 			delete1({});		//go to next function/test in sequence
 		});
 	};
