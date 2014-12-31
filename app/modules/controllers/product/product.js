@@ -9,6 +9,7 @@
 3.1. saveBulk
 3.5. saveActual (private function)
 4. delete1
+5. saveTitle
 */
 
 'use strict';
@@ -21,6 +22,7 @@ var pathParts =dependency.buildPaths(__dirname, {});
 
 var CrudMod =require(pathParts.services+'crud/crud.js');
 var LookupMod =require(pathParts.services+'lookup/lookup.js');
+var MongoDBMod =require(pathParts.services+'mongodb/mongodb.js');
 
 var self;
 
@@ -263,6 +265,35 @@ Product.prototype.delete1 = function(db, data, params)
 	};
 	CrudMod.delete1(db, data, ppSend, function(ret1) {
 		deferred.resolve(ret1);
+	});
+
+	return deferred.promise;
+};
+
+/**
+Save a product title
+@toc 5.
+@method saveTitle
+@param {Object} data
+	@param {String} _id Id of product to update title for
+	@param {String} title Title to save
+@param {Object} params
+@return {Object} (via Promise)
+	@param {Object} product
+**/
+Product.prototype.saveTitle = function(db, data, params)
+{
+	var deferred = Q.defer();
+	var ret ={code:0, msg:'Product.saveTitle '};
+
+	var idObj =MongoDBMod.makeIds({id:data._id});
+	db.product.update({_id: idObj}, { $set: {title: data.title} }, function(err, valid) {
+		if(err || !valid) {
+			deferred.reject(ret);
+		}
+		else {
+			deferred.resolve(ret);
+		}
 	});
 
 	return deferred.promise;

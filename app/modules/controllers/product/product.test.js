@@ -18,6 +18,7 @@ private methods
 	7. read
 	8. search
 	9. delete1
+	10. saveTitle
 */
 
 'use strict';
@@ -336,9 +337,28 @@ function go(params) {
 					var data =res.data.result;
 					expect(data.results.length).toBe(1);		//TODO
 					
-					delete1({});		//go to next function/test in sequence
+					saveTitle({});		//go to next function/test in sequence
 				});
 			});
+		});
+	};
+
+	/**
+	@toc 10.
+	@method saveTitle
+	@param {Object} opts
+	*/
+	var saveTitle =function(opts) {
+		var newTitle ='saveTitle new product title';
+		var params ={
+			_id: TEST_PRODUCT[0]._id,
+			title: newTitle
+		};
+		api.expectRequest({method:'Product.saveTitle'}, {data:params}, {}, {})
+		.then(function(res) {
+			var data =res.data.result;
+			expect(data.title).toBe('bad title');		
+			delete1({});		//go to next function/test in sequence
 		});
 	};
 	
