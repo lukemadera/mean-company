@@ -32,7 +32,8 @@
     "angular-array": "latest",
     "angular-google-auth": "latest",
     "angular-forminput": "latest",
-    "angular-socket-io": "latest"
+    "angular-socket-io": "latest",
+    "ngImgCrop": "latest"
   },
   "license": "MIT",
   "resolutions": {

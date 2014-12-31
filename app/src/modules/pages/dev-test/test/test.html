@@ -1,4 +1,14 @@
 <div class='test' ng-controller='TestCtrl'>
+	
+
+	<div>Select an image file: <input type="file" id="fileInput" /></div>
+	<div class="cropArea">
+	<img-crop image="myImage" result-image="myCroppedImage"></img-crop>
+	</div>
+	<div>Cropped Image:</div>
+	<div><img ng-src="{{myCroppedImage}}" /></div>
+
+<!--
 	<div app-my-directive></div>
 
 	<div app-my-directive custom-text='text 2' scope-one='scopeOne' func-one='funcOne()'></div>
@@ -11,6 +21,7 @@
 
 	Test {{myVar}}
 	<br /><br />
+-->
 	
 	<!--<div hm-tap='tapIt($event, {})' hm-swipeleft='swipeIt($event, "left", {})' hm-swiperight='swipeIt($event, "right", {})' hm-options='{swipe_velocity: 0.1}' style='min-height:100px;'>-->
 	<div ng-click='tapIt($event, {})' ng-swipe-left='swipeIt($event, "left", {})' ng-swipe-right='swipeIt($event, "right", {})' style='min-height:100px;'>

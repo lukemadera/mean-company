@@ -25,7 +25,8 @@ angular.module('jrg', [
 		// 'jackrabbitsgroup.angular-facebook-auth',
 		'jackrabbitsgroup.angular-google-auth',
 		//directives
-		'jackrabbitsgroup.angular-forminput'
+		'jackrabbitsgroup.angular-forminput',
+		'ngImgCrop'
 	]
 );
 
