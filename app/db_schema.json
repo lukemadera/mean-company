@@ -27,7 +27,8 @@
 		"social":{
 			"google":{
 				"id": "{String}",
-				"token":"{String}"
+				"token":"{String}",
+				"refresh_token": "{String}"
 			},
 			"facebook":{
 				"id": "{String}",
