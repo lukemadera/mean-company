@@ -30,7 +30,6 @@
     "momentjs": "latest",
     "angular-string": "latest",
     "angular-array": "latest",
-    "angular-google-auth": "latest",
     "angular-forminput": "latest",
     "angular-socket-io": "latest"
   },

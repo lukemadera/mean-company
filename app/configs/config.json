@@ -113,7 +113,8 @@
 	"google":{
 		"clientId": "486630891328.apps.googleusercontent.com",
 		"clientIdComment":"Make sure to CHANGE this!",
-		"clientSecret": ""
+		"clientSecret": "uKWzHKd9hbF4dxCmxefrpkYh",
+		"callback_url": "http://localhost:3000/callback-google-auth"
 	},
 	"sauceLabs": {
 		"user": "",
@@ -122,5 +123,32 @@
 	"browserstack": {
 		"user": "",
 		"access_key": ""
+	},
+	"e2e": {
+		"facebook": {
+			"logins": [
+				{
+					"email": "vbrnszo_smithwitz_1409165870@tfbnw.net",
+					"password": "testing"
+				}
+			]
+		},
+		"twitter": {
+			"logins": [
+				{
+					"username": "TestingOne3",
+					"password": "testing123"
+				}
+			]
+		},
+		"google": {
+			"logins": [
+				{
+					"email": "meanseed1@gmail.com",
+					"password": "meanseed11"
+				}
+			]
+		},
+		"_run_type_comment": "One of: 'none' for NO e2e tests in default test/grunt task, 'single' (or undefined) for the default single (chrome) platform test, 'parallel' for running multiple tests"
 	}
 }

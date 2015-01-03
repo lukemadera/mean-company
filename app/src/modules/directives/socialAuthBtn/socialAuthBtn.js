@@ -21,8 +21,8 @@ controller / js:
 
 'use strict';
 
-angular.module('app').directive('appSocialAuthBtn', ['appHttp', 'UserModel', 'appConfig', '$rootScope', 'appSocialAuth',
-function (appHttp, UserModel, appConfig, $rootScope, appSocialAuth) {
+angular.module('app').directive('appSocialAuthBtn', ['appHttp', 'UserModel', 'appConfig', '$rootScope',
+function (appHttp, UserModel, appConfig, $rootScope) {
   return {
 		restrict: 'A',
 		scope: {
@@ -38,7 +38,8 @@ function (appHttp, UserModel, appConfig, $rootScope, appSocialAuth) {
 				// "<div class='social-auth-btn-button-facebook' ng-click='fbLogin()'><i class='fa fa-facebook padding-lr social-auth-btn-button-icon'></i><div class='social-auth-btn-button-text'>"+attrs.buttonText+"</div></div>"+
 				// "<div class='social-auth-btn-button-facebook' ng-click='fbLogin()'><i class='fa fa-facebook padding-lr social-auth-btn-button-icon'></i><div class='social-auth-btn-button-text'>Facebook</div></div>"+
 				"<a class='a-div social-auth-btn-button-facebook' ng-href='{{fbLink}}'><i class='fa fa-facebook padding-lr social-auth-btn-button-icon'></i><div class='social-auth-btn-button-text'>Facebook</div></a>"+
-				"<div class='social-auth-btn-button-google' ng-click='googleLogin()'><i class='fa fa-google-plus padding-lr social-auth-btn-button-icon'></i><div class='social-auth-btn-button-text'>Google+</div></div>"+
+				// "<div class='social-auth-btn-button-google' ng-click='googleLogin()'><i class='fa fa-google-plus padding-lr social-auth-btn-button-icon'></i><div class='social-auth-btn-button-text'>Google+</div></div>"+
+				"<a class='a-div social-auth-btn-button-google' ng-href='{{googleLink}}'><i class='fa fa-google-plus padding-lr social-auth-btn-button-icon'></i><div class='social-auth-btn-button-text'>Google+</div></a>"+
 				"<a class='a-div social-auth-btn-button-twitter' ng-href='{{twitterLink}}'><i class='fa fa-twitter padding-lr social-auth-btn-button-icon'></i><div class='social-auth-btn-button-text'>Twitter</div></a>"+
 			"</div>";
 			return html;
@@ -59,15 +60,18 @@ function (appHttp, UserModel, appConfig, $rootScope, appSocialAuth) {
 			
 			$scope.twitterLink ='';		//will be formed in init
 			
+			$scope.googleLink ='';
+			
 			/**
 			@toc 0.
 			@method init
 			*/
 			function init(params) {
-				//form facebook link
 				var publicPathNoSlash =appConfig.dirPaths.publicPath.slice(0, (appConfig.dirPaths.publicPath.length-1));
-				var redirectUri =publicPathNoSlash+appConfig.dirPaths.appPathLink+'callback-facebook-auth';
 				var state ='randState';		//@todo - vary this by user (and by session) for security
+				
+				//form facebook link
+				var redirectUri =publicPathNoSlash+appConfig.dirPaths.appPathLink+'callback-facebook-auth';
 				$scope.fbLink ='https://www.facebook.com/dialog/oauth?client_id='+appConfig.cfgJson.facebook.appId+'&redirect_uri='+redirectUri+'&response_type=token&scope='+appConfig.cfgJson.facebook.scope+'&state='+state;
 				
 				//get twitter request token
@@ -78,84 +82,21 @@ function (appHttp, UserModel, appConfig, $rootScope, appSocialAuth) {
 					
 					$scope.twitterLink ='https://api.twitter.com/oauth/'+twitterLinkPart+'?oauth_token='+$scope.twitter.requestToken;
 				});
+				
+				//form google + link
+				redirectUri =publicPathNoSlash+appConfig.dirPaths.appPathLink+'callback-google-auth';
+				state ='randState';		//@todo - vary this by user (and by session) for security
+				var scopeArr =[
+					'https://www.googleapis.com/auth/plus.login',
+					'https://www.googleapis.com/auth/userinfo.email'		//get email too
+				];
+				var ii, scope ='';
+				for(ii =0; ii<scopeArr.length; ii++) {
+					scopeArr[ii] =encodeURIComponent(scopeArr[ii]);
+				}
+				scope =scopeArr.join(' ');
+				$scope.googleLink ='https://accounts.google.com/o/oauth2/auth?client_id='+appConfig.cfgJson.google.clientId+'&redirect_uri='+redirectUri+'&response_type=code&scope='+scope+'&state='+state+'&access_type=offline';
 			}
-			
-			/**
-			Facebook login handling (in LoginCtrl which is PARENT of LoginFormCtrl and SignupFormCtrl so can use this function for BOTH login and sign up)
-			@toc 1.
-			@method $scope.fbLogin
-			*/
-			/*
-			$scope.fbLogin =function() {
-				var promise =appSocialAuth.checkAuthFacebook({});
-				promise.then(function(data) {
-					var vals ={
-						type: 'facebook',
-						user: {},
-						socialData: {
-							id: data.facebook_id,
-							token: data.access_token
-						}
-					};
-					if(data.email) {
-						vals.user.email =data.email;
-					}
-					var promise1 =appHttp.go({}, {url:'auth/socialLogin', data:vals}, {}, {});
-					promise1.then(function(response) {
-						var user =response.result.user;
-						UserModel.save(user);
-						$rootScope.$broadcast('loginEvt', {'loggedIn': true, 'sess_id':user.sess_id, 'user_id':user._id});
-					});
-				}, function(data) {
-					var dummy =1;
-				});
-			};
-			*/
-			
-			
-			/**
-			Google login handling (in LoginCtrl which is PARENT of LoginFormCtrl and SignupFormCtrl so can use this function for BOTH login and sign up)
-			@toc 2.
-			@method $scope.googleLogin
-			*/
-			$scope.googleLogin =function() {
-				var promise =appSocialAuth.checkAuthGoogle({});
-				promise.then(function(data) {
-					var vals ={
-						type: 'google',
-						user: {},
-						socialData: {
-							id: data.google_id,
-							token: data.access_token
-						}
-					};
-					if(data.email) {
-						vals.user.email =data.email;
-					}
-					if(data.rawData !==undefined) {
-						if(data.rawData.name !==undefined) {
-							if(data.rawData.name.givenName !==undefined) {
-								vals.user.first_name =data.rawData.name.givenName;
-							}
-							if(data.rawData.name.familyName !==undefined) {
-								vals.user.last_name =data.rawData.name.familyName;
-							}
-						}
-						if(data.rawData.image !==undefined && data.rawData.image.url !==undefined) {
-							vals.user._imageUrl =data.rawData.image.url;
-						}
-					}
-					var promise1 =appHttp.go({}, {url:'auth/socialLogin', data:vals}, {}, {});
-					promise1.then(function(response) {
-						var user =response.result.user;
-						UserModel.save(user);
-						$rootScope.$broadcast('loginEvt', {'loggedIn': true, 'sess_id':user.sess_id, 'user_id':user._id});
-					});
-				//no reject's so can't get error
-				// }, function(data) {
-					// var dummy =1;
-				});
-			};
 			
 			init({});
 		}

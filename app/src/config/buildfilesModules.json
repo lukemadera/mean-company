@@ -28,8 +28,7 @@
 							"angular-cookies/angular-cookies.min.js",
 							"momentjs/min/moment.min.js",
 							"angular-array/array.min.js",
-							"angular-string/string.min.js",
-							"angular-google-auth/google-auth.min.js"
+							"angular-string/string.min.js"
 						]
 					},
 					"dirs": [
@@ -94,8 +93,7 @@
 					"comment": "directory paths are part of file lists/names. Also, 'facebook/facebook.all.js' is HUGE (170kb minified!) and is currently included for Facebook login but if you are NOT going to use that, make sure to REMOVE this file! In general it may be better to try to shift to just backend facebook calls since this seems like a waste just for login... Similarly (though it is not as large) with google - remove if you are not using it!",
 					"files": {
 						"js": [
-							"angular-ui-bootstrap/ui-bootstrap-custom-tpls-0.4.0.min.js",
-							"google/gapi-plusone.min.js"
+							"angular-ui-bootstrap/ui-bootstrap-custom-tpls-0.4.0.min.js"
 						]
 					}
 				},
@@ -254,17 +252,6 @@
 									}
 								}
 							]
-						},
-						{
-							"name": "socialAuth",
-							"files": {
-								"js": [
-									"socialAuth.js"
-								],
-								"testUnit": [
-									"socialAuth.spec.js"
-								]
-							}
 						},
 						{
 							"name": "socket",
@@ -542,6 +529,23 @@
 											"callback-facebook-auth.less"
 										]
 									}
+								},
+								{
+									"name": "callback-google-auth",
+									"files": {
+										"html": [
+											"callback-google-auth.html"
+										],
+										"js": [
+											"CallbackGoogleAuthCtrl.js"
+										],
+										"testUnit": [
+											"CallbackGoogleAuthCtrl.spec.js"
+										],
+										"less": [
+											"callback-google-auth.less"
+										]
+									}
 								}
 							]
 						},
@@ -612,6 +616,23 @@
 											"social.less"
 										]
 									}
+								},
+								{
+									"name": "e2e",
+									"files": {
+										"html": [
+											"e2e.html"
+										],
+										"js": [
+											"E2eCtrl.js"
+										],
+										"testUnit": [
+											"E2eCtrl.spec.js"
+										],
+										"less": [
+											"e2e.less"
+										]
+									}
 								}
 							]
 						}
@@ -644,7 +665,7 @@
 					"name": "e2e",
 					"files": {
 						"testE2E": [
-							"**/*.scenarios.js"
+							"*.scenarios.js"
 						]
 					}
 				}

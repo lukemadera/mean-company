@@ -22,8 +22,6 @@ angular.module('jrg', [
 		//services
 		'jackrabbitsgroup.angular-string',
 		'jackrabbitsgroup.angular-array',
-		// 'jackrabbitsgroup.angular-facebook-auth',
-		'jackrabbitsgroup.angular-google-auth',
 		//directives
 		'jackrabbitsgroup.angular-forminput'
 	]
@@ -142,6 +140,13 @@ config(['$routeProvider', '$locationProvider', 'appConfigProvider', '$compilePro
 			}
 		}
 	});
+	$routeProvider.when(appPathRoute+'callback-google-auth', {templateUrl: pagesPath+'callback/callback-google-auth/callback-google-auth.html',
+		resolve: {
+			auth: function(appAuth) {
+				return appAuth.checkSess({});
+			}
+		}
+	});
 	
 	//dev-test
 	// $routeProvider.when(appPathRoute+'test', {templateUrl: pagesPath+'test/test.html'});
@@ -168,6 +173,13 @@ config(['$routeProvider', '$locationProvider', 'appConfigProvider', '$compilePro
 		}
 	});
 	$routeProvider.when(appPathRoute+'dev-test/social', {templateUrl: pagesPath+'dev-test/social/social.html',
+		resolve: {
+			auth: function(appAuth) {
+				return appAuth.checkSess({});
+			}
+		}
+	});
+	$routeProvider.when(appPathRoute+'dev-test/e2e', {templateUrl: pagesPath+'dev-test/e2e/e2e.html',
 		resolve: {
 			auth: function(appAuth) {
 				return appAuth.checkSess({});
