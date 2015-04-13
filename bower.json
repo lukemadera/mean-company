@@ -17,13 +17,13 @@
     "learn"
   ],
   "dependencies": {
-    "angular": "1.3.8",
-    "angular-animate": "1.3.8",
-    "angular-sanitize": "1.3.8",
-    "angular-touch": "1.3.8",
-    "angular-route": "1.3.8",
-    "angular-cookies": "1.3.8",
-	"angular-mocks": "1.3.8",
+    "angular": "1.4.0-beta.5",
+    "angular-animate": "1.4.0-beta.5",
+    "angular-sanitize": "1.4.0-beta.5",
+    "angular-touch": "1.4.0-beta.5",
+    "angular-route": "1.4.0-beta.5",
+    "angular-cookies": "1.4.0-beta.5",
+	"angular-mocks": "1.4.0-beta.5",
     "lesshat": "latest",
     "font-awesome": "latest",
     "less-flexbox": "latest",
@@ -36,12 +36,12 @@
   },
   "license": "MIT",
   "resolutions": {
-    "angular": "1.3.8",
-    "angular-animate": "1.3.8",
-    "angular-sanitize": "1.3.8",
-    "angular-touch": "1.3.8",
-    "angular-route": "1.3.8",
-    "angular-cookies": "1.3.8",
-	"angular-mocks": "1.3.8"
+    "angular": "1.4.0-beta.5",
+    "angular-animate": "1.4.0-beta.5",
+    "angular-sanitize": "1.4.0-beta.5",
+    "angular-touch": "1.4.0-beta.5",
+    "angular-route": "1.4.0-beta.5",
+    "angular-cookies": "1.4.0-beta.5",
+	"angular-mocks": "1.4.0-beta.5"
   }
 }
