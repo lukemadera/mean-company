@@ -72,7 +72,7 @@ function (appHttp, UserModel, appConfig, $rootScope) {
 				
 				//form facebook link
 				var redirectUri =publicPathNoSlash+appConfig.dirPaths.appPathLink+'callback-facebook-auth';
-				$scope.fbLink ='https://www.facebook.com/dialog/oauth?client_id='+appConfig.cfgJson.facebook.appId+'&redirect_uri='+redirectUri+'&response_type=token&scope='+appConfig.cfgJson.facebook.scope+'&state='+state;
+				$scope.fbLink ='https://www.facebook.com/v2.0/dialog/oauth?client_id='+appConfig.cfgJson.facebook.appId+'&redirect_uri='+redirectUri+'&response_type=token&scope='+appConfig.cfgJson.facebook.scope+'&state='+state;
 				
 				//get twitter request token
 				appHttp.go({}, {url:'twitter/requestToken', data:{} }, {}, {})

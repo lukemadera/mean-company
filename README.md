@@ -2,14 +2,14 @@
 
 ## Demo
 NOTE: replace all 'http' with 'https' if using 'https' (set in `config.json`)
-- [Website](http://198.199.118.44:3000/)
-- [Continuous Integration](http://198.199.118.44:3010/)
+- [Website](http://162.243.148.119:3000/)
+- [Continuous Integration](http://162.243.148.119:3010/)
 	- This automatically deploys and tests the yeoman generated mean-seed website on each Github push (from local development)
 - Test Coverage Reports (currently ~90% frontend coverage, ~60% backend coverage)
-	- [Node API/Integration Test Coverage](http://198.199.118.44:3000/src/coverage-node/lcov-report/)
-	- [Angular Karma Unit Test Coverage](http://198.199.118.44:3000/src/coverage-angular/PhantomJS%201.9.7%20%28Linux%29/)
-- [Backend API Interactive Docs](http://198.199.118.44:3000/api/help)
-	- i.e. [Auth API](http://198.199.118.44:3000/api/auth/help)
+	- [Node API/Integration Test Coverage](http://162.243.148.119:3000/src/coverage-node/lcov-report/)
+	- [Angular Karma Unit Test Coverage](http://162.243.148.119:3000/src/coverage-angular/PhantomJS%201.9.8%20%28Linux%29/)
+- [Backend API Interactive Docs](http://162.243.148.119:3000/api/help)
+	- i.e. [Auth API](http://162.243.148.119:3000/api/auth/help)
 - [Github Repo with Generated Code](https://github.com/jackrabbitsgroup/mean-seed-gen)
 
 ## Quick Start
@@ -18,7 +18,7 @@ NOTE: replace all 'http' with 'https' if using 'https' (set in `config.json`)
 
 1. machine (global / program) installs (if you don't have them already)
 	1. install git, nodejs, mongodb, phantomjs
-	2. `sudo npm install -g grunt-cli yo bower generator-mean-seed karma yuidocjs forever less`
+	2. `sudo npm install -g grunt-cli yo bower generator-mean-seed yuidocjs forever less`
 2. `yo mean-seed` (from the NEW directory you want to create the app in)
 	1. `npm install && bower install` (if not already run successfully by Yeoman or any time `package.json` or `bower.json` change)
 		1. If any bower issues (sometimes 1 or more packages will timeout), just re-run `bower update && bower install`

@@ -163,11 +163,11 @@ module.exports = function(grunt) {
 		var protractorPath ='node_modules/protractor/bin/protractor';		//non-Windows
 		var pathPrefix ='';
 		pathPrefix ='node_modules/protractor/';
-		var seleniumStartupParts =['java', '-jar', pathPrefix+'selenium/selenium-server-standalone-2.42.2.jar', '-p', '4444', '-Dwebdriver.chrome.driver='+pathPrefix+'selenium/chromedriver'];
+		var seleniumStartupParts =['java', '-jar', pathPrefix+'selenium/selenium-server-standalone-2.45.0.jar', '-p', '4444', '-Dwebdriver.chrome.driver='+pathPrefix+'selenium/chromedriver'];
 		if(cfgJson.operatingSystem !==undefined && cfgJson.operatingSystem =='windows') {
 			pathPrefix ='node_modules\\protractor\\';
 			protractorPath ='node_modules\\.bin\\protractor';		//Windows
-			seleniumStartupParts =['java', '-jar', pathPrefix+'selenium\\selenium-server-standalone-2.42.2.jar', '-p', '4444', '-Dwebdriver.chrome.driver='+pathPrefix+'selenium\\chromedriver.exe'];
+			seleniumStartupParts =['java', '-jar', pathPrefix+'selenium\\selenium-server-standalone-2.45.0.jar', '-p', '4444', '-Dwebdriver.chrome.driver='+pathPrefix+'selenium\\chromedriver.exe'];
 		}
 		var seleniumStartup =seleniumStartupParts.join(' ');
 		var seleniumStartupCmd =seleniumStartupParts[0];
@@ -478,9 +478,9 @@ module.exports = function(grunt) {
 						dest: publicPathRelative+"config/protractor/protractor.conf.js",
 						templateData: {
 							protractorCaps: {
-								'browser': 'Chrome',
+								'browserName': 'chrome',
 								'resolution': '1024x768',
-								'browser_version': '36.0',
+								'version': '36.0',
 								'os': 'Windows',
 								'os_version': '7',
 							}
@@ -1021,9 +1021,19 @@ module.exports = function(grunt) {
 		
 		//need to exit otherwise coverage report doesn't display on the console..
 		grunt.registerTask('node-cov', ['test-backend', 'exit']);
+
+		var tasksE2eIso =['shell:protractor'];		//default
+		if(cfgTestJson.e2e !==undefined && cfgTestJson.e2e.run_type !==undefined) {
+			if(cfgTestJson.e2e.run_type =='none') {
+				tasksE2eIso =[];
+			}
+			else if(cfgTestJson.e2e.run_type =='parallel') {
+				tasksE2eIso =['parallel:protractor'];
+			}
+		}
 		
 		//shorthand for 'shell:protractor' (this assumes node & selenium servers are already running so will NOT work by itself)
-		grunt.registerTask('e2e-iso', ['shell:protractor']);
+		grunt.registerTask('e2e-iso', tasksE2eIso);
 		
 		//standalone task - starts & stops selenium AND node servers before/after
 		grunt.registerTask('e2e', ['test-cleanup', 'node-test-server', 'test-setup', 'shell:protractor', 'test-cleanup', 'http:nodeShutdown']);

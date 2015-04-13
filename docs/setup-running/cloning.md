@@ -24,7 +24,7 @@ APP_PORT 3000
 
 1. machine (global / program) installs (if you don't have them already)
 	1. install git, nodejs, mongodb, phantomjs, java - see [here for Mac](server-mac.md) or [here for Windows](server-windows.md) or [here for Linux](server-linux.md)
-	2. `sudo npm install -g grunt-cli yo bower generator-mean-seed karma yuidocjs forever less`
+	2. `sudo npm install -g grunt-cli yo bower generator-mean-seed yuidocjs forever less`
 	3. IF using Github (to clone/push/pull from), set it up:
 		1. `git config --global user.name "GIT_NAME"`
 		2. `git config --global user.email GIT_EMAIL`

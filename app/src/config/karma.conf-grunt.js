@@ -76,6 +76,15 @@ module.exports = function (config) {
 				}
 			]
 		}
+
+		//https://github.com/karma-runner/karma/issues/598
+		//https://github.com/CenterForOpenScience/osf.io/commit/4ac7ccd72e479c720dbe86ea2fcbd6acfc81e87f
+		// If browser does not capture in given timeout [ms], kill it
+		captureTimeout: 60000,
+		// to avoid DISCONNECTED messages
+		browserDisconnectTimeout : 10000, // default 2000
+		browserDisconnectTolerance : 1, // default 0
+		browserNoActivityTimeout : 60000, //default 10000
 		
 	});
 };
