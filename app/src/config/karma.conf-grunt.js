@@ -75,7 +75,7 @@ module.exports = function (config) {
 					dir: 'coverage-angular/'
 				}
 			]
-		}
+		},
 
 		//https://github.com/karma-runner/karma/issues/598
 		//https://github.com/CenterForOpenScience/osf.io/commit/4ac7ccd72e479c720dbe86ea2fcbd6acfc81e87f
