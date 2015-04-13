@@ -70,7 +70,9 @@ angular.module('app').directive('appMyDirective', [ function () {
 				console.log('app-my-directive event emitted');
 			};
 
-			$scope.funcOne();
+			if($scope.funcOne) {
+				$scope.funcOne();
+			}
 		}
 	};
 }]);
